@@ -14,8 +14,12 @@
         <property name="connectionTimeout" value="30000"/>
     </bean>
 
-    <bean class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+    <bean name="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
         <constructor-arg ref="hikariConfig"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
 </beans>
